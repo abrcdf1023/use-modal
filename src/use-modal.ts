@@ -2,12 +2,15 @@ import * as React from 'react'
 import modalStore from './modal-store'
 
 const useModal = (key: string) => {
-  const modals = React.useSyncExternalStore(modalStore.subscribe, modalStore.getSnapshot);
-
+  const modals = React.useSyncExternalStore(l => modalStore.subscribe(key, l), modalStore.getSnapshot, modalStore.getSnapshot);
   return {
     openModal: (modalProps: any) => modalStore.openModal(key, modalProps),
-    open: modals.get(key).isOpen,
-    modalProps: modals.get(key).props,
+    get open() {
+      return modals.get(key)?.open ?? false;
+    },
+    get modalProps() {
+      return modals.get(key)?.props ?? {};
+    },
   }
 }
 

@@ -1,6 +1,6 @@
 "use client"
 
-import useModal from '../../src'
+import useModal from 'use-modal'
 import Modal from '../component/modal'
 
 export default function Page() {

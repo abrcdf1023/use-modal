@@ -1,6 +1,6 @@
 "use client"
 
-import useModal from '../../src'
+import useModal from 'use-modal'
 
 const Modal = () => {
   const { open, modalProps } = useModal('modal-id')
